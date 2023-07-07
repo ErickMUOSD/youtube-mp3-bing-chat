@@ -3,6 +3,7 @@ import os
 import re
 from EdgeGPT.EdgeGPT import Chatbot, ConversationStyle
 from pytube import YouTube
+from alive_progress.styles import showtime
 
 
 def dowload_yt_video(url):
@@ -24,18 +25,27 @@ def extract_youtube_url(text):
     return re.search("(?P<url>https?://[^\s]+)", text_without_special_characters).group("url")
 
 
-async def main(text, author):
+async def main():
     cookies = json.loads(open("bing_cookies*.json", encoding="utf-8").read())  # might omit cookies option
-    bot = await Chatbot.create(cookies=cookies )  # Passing cookies is "optional", as explained above
-    response = await bot.ask(prompt=f"Busca un video de youtube llamado: {text} de  {author} y retorna  la url ",
+    bot = await Chatbot.create(cookies=cookies)  # Passing cookies is "optional", as explained above
+
+    end_system = 'N'
+    while end_system == 'N' or end_system == 'n':
+        print('Enter text song:')
+        text = input()
+        print('Enter author:')
+        author = input()
+        response = await bot.ask(prompt=f"Busca un video de youtube llamado: {text} de  {author} y retorna  la url ",
                              conversation_style=ConversationStyle.precise, simplify_response=True)
-    # response = json.dumps(response, indent=2)
-    print(response['text'])
-    await bot.close()
-    return response['text']
+        print(response['text'])
+        url = extract_youtube_url(response['text'])
+        if not url:
+            print("No se encontro la url")
+        else:
+            dowload_yt_video(url)
+        print('Leave system ? Y/N')
+        end_system = input()
 
 
 if __name__ == "__main__":
-    text = asyncio.run(main(text="Lagrimas de escarcha", author="Gatos negros del tiberio"))
-    url = extract_youtube_url(text)
-    dowload_yt_video(url)
+    asyncio.run(main())

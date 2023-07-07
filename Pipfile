@@ -7,7 +7,7 @@ name = "pypi"
 chatbot = "*"
 edgegpt = "*"
 pytube = "*"
-
+alive-progress = "*"
 [dev-packages]
 
 [requires]
