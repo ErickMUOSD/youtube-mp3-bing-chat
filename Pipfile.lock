@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "34cfc1db7ec3b37b3e6be8f5b29637ebcf4291d35e952843fd667335af191ad7"
+            "sha256": "302043b7d10753cea9d78f85ee12241d150c16f6bb5b27f652134639295bfabf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -17,6 +17,14 @@
         ]
     },
     "default": {
+        "about-time": {
+            "hashes": [
+                "sha256:6a538862d33ce67d997429d14998310e1dbfda6cb7d9bbfbf799c4709847fece",
+                "sha256:8bbf4c75fe13cbd3d72f49a03b02c5c7dca32169b6d49117c257e7eb3eaee341"
+            ],
+            "markers": "python_version >= '3.7' and python_version < '4'",
+            "version": "==4.2.1"
+        },
         "aiohttp": {
             "hashes": [
                 "sha256:03543dcf98a6619254b409be2d22b51f21ec66272be4ebda7b04e6412e4b2e14",
@@ -117,6 +125,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==1.3.1"
+        },
+        "alive-progress": {
+            "hashes": [
+                "sha256:74a95d8d0d42bc99d3a3725dbd06ebb852245f1b64e301a7c375b92b22663f7b",
+                "sha256:c80ad87ce9c1054b01135a87fae69ecebbfc2107497ae87cbe6aec7e534903db"
+            ],
+            "index": "pypi",
+            "version": "==3.1.4"
         },
         "anyio": {
             "hashes": [
@@ -247,11 +263,11 @@
         },
         "edgegpt": {
             "hashes": [
-                "sha256:9d6c34cd4216dfcb3d70d7fd7ecf1437ca8c44131e4f4625d1e7d2a4213042ad",
-                "sha256:c2ddb1c0ce2c56deb0a28bd23bca58ba99305fd7bca8ae2b3f8e91df39fb53bd"
+                "sha256:01afc4fb04df1573b414478c566da73959ebb4645b49017b6b80bad50e873b38",
+                "sha256:dacb086497894cd4650e8ff3cf7ff4611802df3cb9a8895486ae9c63e4f7b28f"
             ],
             "index": "pypi",
-            "version": "==0.11.8"
+            "version": "==0.12.0"
         },
         "frozenlist": {
             "hashes": [
@@ -332,6 +348,12 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==1.3.3"
+        },
+        "grapheme": {
+            "hashes": [
+                "sha256:44c2b9f21bbe77cfb05835fec230bd435954275267fea1858013b102f8603cca"
+            ],
+            "version": "==0.6.0"
         },
         "h11": {
             "hashes": [

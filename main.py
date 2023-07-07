@@ -22,7 +22,12 @@ def dowload_yt_video(url):
 
 def extract_youtube_url(text):
     text_without_special_characters = text.replace('(', ' ').replace(')', ' ').replace('[', ' ').replace(']', ' ')
-    return re.search("(?P<url>https?://[^\s]+)", text_without_special_characters).group("url")
+
+    search = re.search("(?P<url>https?://[^\s]+)", text_without_special_characters)
+    if not search:
+        return None
+
+    return search.group("url")
 
 
 async def main():
@@ -35,10 +40,14 @@ async def main():
         text = input()
         print('Enter author:')
         author = input()
-        response = await bot.ask(prompt=f"Busca un video de youtube llamado: {text} de  {author} y retorna  la url ",
+        try:
+           response = await bot.ask(prompt=f"Busca un video de youtube llamado: {text} de  {author} y retorna  la url ",
                              conversation_style=ConversationStyle.precise, simplify_response=True)
+        except Exception as e:
+            print(str(e))
+            continue
         print(response['text'])
-        url = extract_youtube_url(response['text'])
+        url = extract_youtube_url(response['text']  or '')
         if not url:
             print("No se encontro la url")
         else:
